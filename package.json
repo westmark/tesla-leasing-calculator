@@ -1,0 +1,32 @@
+{
+  "name": "tesla-calculator",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aphrodite": "^1.2.5",
+    "normalize.css": "^7.0.0",
+    "prop-types": "^15.6.0",
+    "query-string": "^5.0.1",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-scripts": "1.0.17",
+    "thousands": "^1.0.1"
+  },
+  "scripts": {
+    "deploy": "yarn run upload && yarn run set-headers",
+    "upload": "aws s3 sync build s3://sansmint-car-leasing --profile default",
+    "set-headers": "aws s3 cp s3://sansmint-car-leasing/index.html s3://sansmint-car-leasing/index.html --metadata \"Cache-Control\"=\"max-age=600\" --profile default --cache-control=\"max-age=600\"",
+
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint-config-westlint": "^1.1.7",
+    "eslint-plugin-jest": "^21.3.2"
+  },
+  "eslintConfig": {
+    "extends": "westlint"
+  }
+}
